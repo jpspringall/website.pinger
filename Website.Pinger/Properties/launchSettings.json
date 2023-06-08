@@ -1,0 +1,40 @@
+{
+  "profiles": {
+    "Website.Pinger": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "PINGER_INTERVAL_IN_MINUTES": "1",
+        "PINGER_URLS_CSV": "https://www.google.com,http://localhost:4200/ping"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7007;http://localhost:5229"
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "publishAllPorts": true,
+      "useSSL": true
+    }
+  },
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:49981",
+      "sslPort": 44352
+    }
+  }
+}

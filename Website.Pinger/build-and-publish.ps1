@@ -1,0 +1,1 @@
+docker buildx build --platform linux/amd64,linux/arm64 -f "C:\dev\Visual Studio\Website.Pinger\Website.Pinger\Dockerfile" -t jpspringall/website-pinger --push "C:\dev\Visual Studio\Website.Pinger"
