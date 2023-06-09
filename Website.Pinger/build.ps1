@@ -1,0 +1,1 @@
+docker build -f "C:\dev\Visual Studio\Website.Pinger\Website.Pinger\Dockerfile" -t jpspringall/website-pinger "C:\dev\Visual Studio\Website.Pinger"

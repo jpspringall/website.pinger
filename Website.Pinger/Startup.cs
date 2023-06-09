@@ -1,4 +1,6 @@
-﻿namespace Website.Pinger
+﻿using Microsoft.Extensions.FileProviders;
+
+namespace Website.Pinger
 {
     public class Startup
     {
@@ -11,11 +13,13 @@
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseRouting();
-            app.UseEndpoints(endpoints =>
+
+            app.UseStaticFiles(new StaticFileOptions
             {
-                endpoints.MapControllers();
-            });
+                FileProvider = new PhysicalFileProvider(env.ContentRootPath)
+            })
+            .UseRouting()
+            .UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }

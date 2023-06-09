@@ -16,9 +16,26 @@ namespace Website.Pinger
                     services.AddHostedService<Workers.Pinger>();
 
                 })
-
+                .ConfigureAppSettings()
                 .Build();
+
             host.Run();
+        }
+    }
+
+    public static class WebApplicationBuilder
+    {
+        public static IHostBuilder ConfigureAppSettings(this IHostBuilder host)
+        {
+            host.ConfigureAppConfiguration((ctx, builder) =>
+            {
+                builder.SetBasePath(ctx.HostingEnvironment.ContentRootPath)
+                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                    .AddJsonFile($"appsettings.{ctx.HostingEnvironment.EnvironmentName}.json", optional: true)
+                    .AddEnvironmentVariables();
+            });
+
+            return host;
         }
     }
 }
