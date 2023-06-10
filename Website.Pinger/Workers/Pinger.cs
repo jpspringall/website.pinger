@@ -57,6 +57,7 @@ namespace Website.Pinger.Workers
                         Url = url,
                         Status = (await _httpClient.GetAsync($"{url}?q={DateTime.Now.ToFileTime()}")).StatusCode.ToString(),
                         Time = currentTime,
+                        TimeTaken = DateTime.Now - currentTime,
                         NextPing = currentTime.AddMinutes(_pingerIntervalInMinutes)
                     });
                 }
@@ -66,7 +67,7 @@ namespace Website.Pinger.Workers
             {
                 var currentTime = System.DateTime.Now;
                 _logger.LogError(ex, "Error ping urls");
-                results.Add(new PingResult { Url = ex.ToString(), Status = "Error", Time = currentTime, NextPing = currentTime.AddMinutes(_pingerIntervalInMinutes) });
+                results.Add(new PingResult { Url = ex.ToString(), Status = "Error", TimeTaken = TimeSpan.FromTicks(0), Time = currentTime, NextPing = currentTime.AddMinutes(_pingerIntervalInMinutes) });
             }
 
             await System.IO.File.WriteAllTextAsync(EnvironmentReader.StorageFile, Newtonsoft.Json.JsonConvert.SerializeObject(results));

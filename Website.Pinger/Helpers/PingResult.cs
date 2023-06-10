@@ -4,6 +4,7 @@
     {
         public string Url { get; set; }
         public string Status { get; set; }
+        public TimeSpan TimeTaken { get; set; }
         public DateTime Time { get; set; }
         public DateTime NextPing { get; set; }
     }
