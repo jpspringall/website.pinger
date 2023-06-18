@@ -49,6 +49,7 @@ namespace Website.Pinger.Workers
             var results = new List<PingResult>();
             try
             {
+                EnvironmentReader.PingsSinceStart += 1;
                 foreach (var url in _pingerUrls)
                 {
                     var currentTime = System.DateTime.Now;

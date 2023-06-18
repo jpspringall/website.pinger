@@ -2,6 +2,18 @@
 {
     public static class EnvironmentReader
     {
+        public static long PingsSinceStart
+        {
+            get
+            {
+                var pingsSinceStart = Environment.GetEnvironmentVariable("PINGS_SINCE_START");
+                return string.IsNullOrWhiteSpace(pingsSinceStart) ? 0 : System.Convert.ToInt32(pingsSinceStart);
+            }
+            set =>
+                Environment.SetEnvironmentVariable("PINGS_SINCE_START",
+                    (value > long.MaxValue - 10 ? 0 : value).ToString());
+        }
+
         public static int PingerIntervalInMinutes
         {
             get

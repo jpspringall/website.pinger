@@ -26,6 +26,7 @@ namespace ConsumerTest.Controllers
                     {
                         currentTime = DateTime.Now,
                         intervalInMinutes = EnvironmentReader.PingerIntervalInMinutes,
+                        pingsSinceStart = EnvironmentReader.PingsSinceStart,
                         urls = EnvironmentReader.PingerUrls,
                         results = Newtonsoft.Json.JsonConvert.DeserializeObject<List<PingResult>>(results)
                     }, new JsonSerializerOptions { WriteIndented = true });
