@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Website.Pinger.Helpers;
 
-namespace ConsumerTest.Controllers
+namespace Website.Pinger.Controllers
 {
     [Route("")]
     [ApiController]

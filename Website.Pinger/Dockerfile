@@ -1,13 +1,13 @@
 #See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
 FROM alpine AS base
-RUN apk add aspnetcore6-runtime
+RUN apk add aspnetcore8-runtime
 RUN apk add tzdata --no-cache
 WORKDIR /app
 EXPOSE 4000
 
 FROM alpine AS build
-RUN apk add dotnet6-sdk
+RUN apk add dotnet8-sdk
 WORKDIR /src
 COPY ["Website.Pinger/Website.Pinger.csproj", "Website.Pinger/"]
 RUN dotnet restore "Website.Pinger/Website.Pinger.csproj"
